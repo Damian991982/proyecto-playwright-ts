@@ -23,5 +23,5 @@ test("Login", async ({ page }) => {
   //await cartPageMethods.clickOnRemoveButton("Sauce Labs Backpack");
 
   //await commonPageMethods.openMenu();
-  await page.waitForTimeout(4000);
+  //await page.waitForTimeout(4000);
 });
