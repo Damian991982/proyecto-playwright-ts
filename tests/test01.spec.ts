@@ -12,6 +12,7 @@ test("Login", async ({ page }) => {
   const loginPageMethods = new LoginPageMethods(page);
   const productPageMethods = new ProductPageMethods(page);
   const cartPageMethods = new CartPageMethods(page);
+
   await commonPageMethods.navigateToTheAppApplication();
   await loginPageMethods.insertUsername(userCredentials.usernames.standardUser);
   await loginPageMethods.insertPassword(userCredentials.password);
