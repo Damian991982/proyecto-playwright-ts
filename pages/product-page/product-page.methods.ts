@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page, expect } from "@playwright/test";
 import { ProductPageElements } from "./product-page.elements";
 import { Logger } from "../../support/logger";
 export class ProductPageMethods {
@@ -18,5 +18,15 @@ export class ProductPageMethods {
   async clickOnCartIcon() {
     await Logger.LogStep("Click on Cart icon");
     await this.productPageElements.icons.cart.click();
+  }
+  async verifyProductsPageIsDisplayed() {
+    await Logger.LogVerification("Verify that the Products is show");
+    const elementsCount = await this.productPageElements.otherElements.pageTitle.count();
+    expect(elementsCount).toEqual(1);
+    //const element = this.productPageElements.otherElements.pageTitle;
+    //await this.page.waitForTimeout(50000);
+    //await expect(element).toBeVisible();
+    //await this.page.waitForTimeout(50000);
+    //await expect(element).toHaveCount(1);
   }
 }

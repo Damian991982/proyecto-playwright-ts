@@ -1,28 +1,16 @@
-import { test, expect } from "@playwright/test";
-import { CommonPageMethods } from "../pages/common-page/common-page.methods";
-import { LoginPageMethods } from "../pages/login-page/login-page.methods";
-import { LoginPageData } from "../pages/login-page/login-page.data";
-import { ProductPageMethods } from "../pages/product-page/product-page.methods";
-import { CartPageMethods } from "../pages/cart-page/cart-page.methods";
+import { Page, test, expect } from "@playwright/test";
 
-const userCredentials = LoginPageData.credentials;
+test.describe("Ingreso", () => {
+  test("Verificar que el título principal sea visible", async ({ page }) => {
+    await page.goto("https://www.saucedemo.com/");
 
-test("Login", async ({ page }) => {
-  const commonPageMethods = new CommonPageMethods(page);
-  const loginPageMethods = new LoginPageMethods(page);
-  const productPageMethods = new ProductPageMethods(page);
-  const cartPageMethods = new CartPageMethods(page);
+    await page.fill('[data-test="username"]', "standard_user");
+    await page.fill('[data-test="password"]', "secret_sauce");
+    await page.click('[data-test="login-button"]');
 
-  await commonPageMethods.navigateToTheAppApplication();
-  await loginPageMethods.insertUsername(userCredentials.usernames.standardUser);
-  await loginPageMethods.insertPassword(userCredentials.password);
-  await loginPageMethods.clickOnLoginButton();
-  await productPageMethods.clickOnAddToCart("Sauce Labs Backpack");
-  await productPageMethods.clickOnCartIcon();
-  await cartPageMethods.clickOnCheckoutButton();
-  //await cartPageMethods.clickOnContinueShoppingButton();
-  //await cartPageMethods.clickOnRemoveButton("Sauce Labs Backpack");
+    const titulo = page.locator(".title");
 
-  //await commonPageMethods.openMenu();
-  //await page.waitForTimeout(4000);
+    await expect(titulo).toBeVisible();
+    await expect(titulo).toHaveText("Products");
+  });
 });

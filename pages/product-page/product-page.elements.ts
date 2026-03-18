@@ -13,6 +13,12 @@ export class ProductPageElements {
     };
   }
 
+  get otherElements() {
+    return {
+      pageTitle: this.page.locator(".title"),
+    };
+  }
+
   addCartButton(productName: string) {
     return this.page.locator(`//div[.="${productName}"]//ancestor::div[@class="inventory_item"]//button`);
   }

@@ -14,4 +14,7 @@ export class Logger {
   static async LogpOSTCondition(description: string) {
     await step(`POST-CONDITION - ${description}`, () => {});
   }
+  static async ViewCount(val: Number) {
+    await step(`The value is: ${val}`, () => {});
+  }
 }
