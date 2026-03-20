@@ -28,18 +28,25 @@ test.describe("login", () => {
 
     await commonPageMethods.navigateToTheAppApplication();
 
-    await loginPageMethods.insertUsername("a");
-    await loginPageMethods.insertPassword("a");
+    await loginPageMethods.insertUsername("anything");
+    await loginPageMethods.insertPassword("anything");
     await loginPageMethods.clickOnLoginButton();
 
     await loginPageMethods.verifyMessage("Epic sadface: Username and password do not match any user in this service");
   });
 
-  test.only("login", async ({ page }) => {
+  /*test.only("login", async ({ page }) => {
     const commonPageMethods = new CommonPageMethods(page);
     const loginPageMethods = new LoginPageMethods(page);
 
     await commonPageMethods.navigateToTheAppApplication();
     await loginPageMethods.login(interfaces.lokedOutUser);
+  });*/
+  test("login with blank credentials", async ({ page }) => {
+    const commonPageMethods = new CommonPageMethods(page);
+    const loginPageMethods = new LoginPageMethods(page);
+    await commonPageMethods.navigateToTheAppApplication();
+    await loginPageMethods.clickOnLoginButton();
+    await loginPageMethods.verifyMessage("Username is required");
   });
 });
