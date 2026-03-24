@@ -32,7 +32,6 @@ export class LoginPageMethods {
   async login(user: User) {
     await this.insertUsername(user.username);
     await this.insertPassword(user.password);
-    await this.page.waitForTimeout(5000);
     await this.clickOnLoginButton();
   }
 }

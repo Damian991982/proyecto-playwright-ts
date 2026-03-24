@@ -20,7 +20,7 @@ export class ProductPageMethods {
     await this.productPageElements.icons.cart.click();
   }
   async verifyProductsPageIsDisplayed() {
-    await Logger.LogVerification("Verify that the Products is show");
+    await Logger.LogVerification("Verify that the Products page is show");
     const elementsCount = await this.productPageElements.otherElements.pageTitle.count();
     expect(elementsCount).toEqual(1);
     //const element = this.productPageElements.otherElements.pageTitle;
