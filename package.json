@@ -19,5 +19,9 @@
     "@types/node": "^25.1.0",
     "allure-playwright": "^3.4.5",
     "chai": "^6.2.2"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.38.1",
+    "rimraf": "^6.1.3"
   }
 }
