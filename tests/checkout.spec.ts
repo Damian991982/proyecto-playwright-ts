@@ -8,7 +8,7 @@ import { standardUser } from "../pages/login-page/login-page.interfaces";
 import { CheckoutPageMethods } from "../pages/checkout-page/checkout-page.methods";
 import { CheckoutOverviewPageMethods } from "../pages/checkout-overview-page/checkout-overview-page.methods";
 
-test.describe.only("Checkout", async () => {
+test.describe("Checkout", async () => {
   test("Checkout process", async ({ page }) => {
     const commonPageMethod = new CommonPageMethods(page);
     const loginPageMethods = new LoginPageMethods(page);
@@ -30,6 +30,5 @@ test.describe.only("Checkout", async () => {
     await checkoutPageMethods.insertPostalCode("1832");
     await checkoutPageMethods.clickOnContinueButton();
     await checkoutOverviewPageMethods.verifyCheckoutOverviewPageIsDisplayed();
-    await page.waitForTimeout(5000);
   });
 });
