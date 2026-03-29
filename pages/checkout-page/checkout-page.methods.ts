@@ -14,12 +14,12 @@ export class CheckoutPageMethods {
     await this.checkoutPageElements.inputs.firstName.fill(firstName);
   }
 
-  async lastName(lastName: string) {
+  async insertLastName(lastName: string) {
     await Logger.LogStep(`LastName "${lastName}" as Last Name`);
     await this.checkoutPageElements.inputs.lastName.fill(lastName);
   }
 
-  async postalCode(postalCode: string) {
+  async insertPostalCode(postalCode: string) {
     await Logger.LogStep(`PostalCode "${postalCode}" as Postal Code`);
     await this.checkoutPageElements.inputs.postalCode.fill(postalCode);
   }
