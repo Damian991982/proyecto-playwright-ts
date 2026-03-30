@@ -1,7 +1,6 @@
 name: Playwright Tests
 on:
   workflow_dispatch:
-
 jobs:
   test:
     timeout-minutes: 60
@@ -23,3 +22,9 @@ jobs:
           name: allure-report
           path: allure-report/
           retention-days: 30
+
+        name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
